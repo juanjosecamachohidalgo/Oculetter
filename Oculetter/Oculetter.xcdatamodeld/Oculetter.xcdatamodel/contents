@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="16G1510" minimumToolsVersion="Automatic">
+    <entity name="Letter" representedClassName=".Letter" syncable="YES">
+        <attribute name="high" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="onpix" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="reconocida" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="x2bar" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="x2ybr" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="xbar" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="xbox" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="xege" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="xegvy" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="xybar" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="y2bar" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="ybar" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="ybox" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="yege" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="yegvx" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <relationship name="prueba" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Prueba" inverseName="tiene" inverseEntity="Prueba" syncable="YES"/>
+    </entity>
+    <entity name="Pacient" representedClassName=".Pacient" syncable="YES">
+        <attribute name="apellidos" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="doctor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="edad" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="foto" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sexo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telefono" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hace" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Prueba" inverseName="pertenece_a" inverseEntity="Prueba" syncable="YES"/>
+        <relationship name="medico" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Usuario" inverseName="tiene" inverseEntity="Usuario" syncable="YES"/>
+    </entity>
+    <entity name="Prueba" representedClassName=".Prueba" syncable="YES">
+        <attribute name="fecha" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="resultados" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="pertenece_a" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Pacient" inverseName="hace" inverseEntity="Pacient" syncable="YES"/>
+        <relationship name="tiene" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Letter" inverseName="prueba" inverseEntity="Letter" syncable="YES"/>
+    </entity>
+    <entity name="Usuario" representedClassName=".Usuario" syncable="YES">
+        <attribute name="contrasenia" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tiene" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pacient" inverseName="medico" inverseEntity="Pacient" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Letter" positionX="495" positionY="-261" width="128" height="315"/>
+        <element name="Pacient" positionX="-45" positionY="-162" width="128" height="180"/>
+        <element name="Prueba" positionX="270" positionY="-162" width="128" height="105"/>
+        <element name="Usuario" positionX="-56" positionY="-342" width="128" height="88"/>
+    </elements>
+</model>
